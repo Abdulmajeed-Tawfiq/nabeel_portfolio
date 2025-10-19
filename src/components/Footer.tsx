@@ -1,4 +1,3 @@
-
 function Footer() {
   return (
     <div id="contact" className="h-[20vh] content-center text-center bg-gray-900 text-white ">

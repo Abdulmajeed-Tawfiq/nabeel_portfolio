@@ -10,6 +10,9 @@ export default {
 				mainColor: '#3B82F6',
 			}
 		},
+		maxWidth: {
+			'app-container': '1600px',
+		},
 		screens: {
 			tn: "350px",
 			sm: "576px",
@@ -19,6 +22,6 @@ export default {
 			xl: "1200px",
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	// plugins: [require("tailwindcss-animate")],
 }
 
