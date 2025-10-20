@@ -3,17 +3,57 @@
 @tailwind utilities;
 
 * {
-  padding: 0;
-  margin: 0;
-  /* background-color: #2b2b3b; */
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    overflow: hidden;
+    height: 100vh;
+    scroll-behavior: unset;
+}
+
+#root {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Disable scrolling on mobile */
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overscroll-behavior: none;
 }
 
 .revolving-elements circle {
-  animation: rotate 10s linear infinite;
+    animation: rotate 10s linear infinite;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom animations for section transitions */
+.section-transition {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth text animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
 }
