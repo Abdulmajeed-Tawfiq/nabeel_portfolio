@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -89,7 +90,14 @@ function Footer() {
             transition={{ duration: 0.6, delay: 1 }}
           >
             <p className="text-gray-500 text-xs">
-              Made with ❤️ for creating amazing digital experiences
+              Made by{" "}
+              <a
+                href="https://abdulmajeed10.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abdulmajeed Tawfik
+              </a>
             </p>
           </motion.div>
         </motion.div>
