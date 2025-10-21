@@ -46,12 +46,10 @@ function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Button
-                className="bg-mainColor rounded-xl text-xl py-6 px-8 hover:bg-opacity-80 transition-all duration-300 hover:scale-105"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <Button className="bg-mainColor rounded-xl text-xl py-6 px-8 hover:bg-opacity-80 transition-all duration-300">
                 Check My CV <span>📄</span>
               </Button>
             </motion.div>
