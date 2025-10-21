@@ -1,16 +1,24 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ExternalLink, Github } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
+
+interface PortfolioProps {
+  onNavigateToNextSection?: () => void;
+  onNavigateToPrevSection?: () => void;
+}
 
 interface Project {
   id: number;
   title: string;
   description: string;
+  longDescription: string;
   icon: string;
   technologies: string[];
   githubUrl: string;
   liveUrl: string;
   color: string;
+  images: string[];
 }
 
 const projects: Project[] = [
@@ -18,139 +26,386 @@ const projects: Project[] = [
     id: 1,
     title: "E-Commerce Mobile App",
     description:
-      "A full-featured e-commerce mobile application built with Flutter. Features include user authentication, product catalog, shopping cart, payment integration, and order management.",
+      "A full-featured e-commerce mobile application built with Flutter",
+    longDescription:
+      "A comprehensive e-commerce solution featuring user authentication, real-time product catalog, advanced shopping cart functionality, secure payment integration with Stripe, and complete order management system. The app includes push notifications, wishlist features, product reviews, and personalized recommendations.",
     icon: "📱",
-    technologies: ["Flutter", "Dart", "Firebase", "Stripe", "REST API"],
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "Stripe",
+      "REST API",
+      "Push Notifications",
+    ],
     githubUrl: "https://github.com/nabeel/ecommerce-app",
     liveUrl: "https://play.google.com/store/apps",
     color: "from-purple-500 to-pink-500",
+    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
   },
   {
     id: 2,
     title: "Social Media Dashboard",
-    description:
-      "A responsive social media management dashboard with real-time analytics, post scheduling, and user engagement tracking. Built with modern web technologies.",
+    description: "A responsive social media management dashboard",
+    longDescription:
+      "A powerful social media management platform with real-time analytics, intelligent post scheduling, engagement tracking, and comprehensive user insights. Features include multi-account management, content calendar, performance metrics, and automated reporting tools.",
     icon: "📊",
-    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Socket.io"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "Socket.io",
+      "Chart.js",
+    ],
     githubUrl: "https://github.com/nabeel/social-dashboard",
     liveUrl: "https://social-dashboard.vercel.app",
     color: "from-blue-500 to-cyan-500",
+    images: [
+      "/images/phone.svg",
+      "/images/phone.svg",
+      "/images/phone.svg",
+      "/images/phone.svg",
+      "/images/phone.svg",
+    ],
   },
   {
     id: 3,
     title: "Weather App",
-    description:
-      "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather information. Features smooth animations and intuitive design.",
+    description: "Beautiful weather application with location-based forecasts",
+    longDescription:
+      "An elegant weather application providing accurate location-based forecasts, interactive weather maps, hourly and weekly predictions, and detailed meteorological information. Features smooth animations, customizable widgets, and weather alerts for severe conditions.",
     icon: "🌤️",
     technologies: [
       "Flutter",
       "OpenWeather API",
       "Location Services",
       "Animations",
+      "Maps",
     ],
     githubUrl: "https://github.com/nabeel/weather-app",
     liveUrl: "https://weather-app-demo.com",
     color: "from-green-500 to-teal-500",
+    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+  },
+  {
+    id: 4,
+    title: "Task Management System",
+    description: "Comprehensive task management with team collaboration",
+    longDescription:
+      "A modern task management system designed for teams with features including project tracking, kanban boards, time tracking, productivity analytics, and real-time collaboration. Includes calendar integration, file attachments, comments, and custom workflows.",
+    icon: "✅",
+    technologies: [
+      "React Native",
+      "Redux",
+      "Express.js",
+      "PostgreSQL",
+      "WebSocket",
+    ],
+    githubUrl: "https://github.com/nabeel/task-manager",
+    liveUrl: "https://taskmanager.app",
+    color: "from-orange-500 to-red-500",
+    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
   },
 ];
 
-function Portfolio() {
+function Portfolio({
+  onNavigateToNextSection,
+  onNavigateToPrevSection,
+}: PortfolioProps = {}) {
+  const [currentProject, setCurrentProject] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToProject = useCallback(
+    (index: number) => {
+      if (index >= 0 && index < projects.length && !isScrolling) {
+        setIsScrolling(true);
+        setCurrentProject(index);
+        setCurrentImageIndex(0);
+
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 750);
+      }
+    },
+    [isScrolling],
+  );
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (
+        containerRef.current &&
+        containerRef.current.contains(e.target as Node)
+      ) {
+        e.preventDefault();
+
+        if (isScrolling) return;
+
+        if (e.deltaY > 0) {
+          // Scrolling down
+          if (currentProject < projects.length - 1) {
+            scrollToProject(currentProject + 1);
+          } else if (onNavigateToNextSection && !isScrolling) {
+            // At last project, navigate to next section with delay
+            setIsScrolling(true);
+            setTimeout(() => {
+              onNavigateToNextSection();
+              setIsScrolling(false);
+            }, 300);
+          }
+        } else {
+          // Scrolling up
+          if (currentProject > 0) {
+            scrollToProject(currentProject - 1);
+          } else if (onNavigateToPrevSection) {
+            // At first project, navigate to previous section
+            onNavigateToPrevSection();
+          }
+        }
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+      return () => container.removeEventListener("wheel", handleWheel);
+    }
+  }, [
+    currentProject,
+    isScrolling,
+    scrollToProject,
+    onNavigateToNextSection,
+    onNavigateToPrevSection,
+  ]);
+
+  // Auto-rotate images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prev) => (prev + 1) % projects[currentProject].images.length,
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentProject]);
+
+  const project = projects[currentProject];
+
   return (
     <div
       id="portfolio"
-      className="h-screen w-full flex items-center justify-center bg-gray-900 text-white"
+      ref={containerRef}
+      className="h-screen w-full flex items-center justify-center bg-gray-900 text-white overflow-hidden relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Project Counter */}
+      <div className="absolute top-24 left-8 z-20 max-md:top-20 max-md:left-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="text-gray-400"
         >
-          <h2 className="text-5xl max-lg:text-4xl max-md:text-3xl font-bold text-white mb-4">
-            My <span className="text-mainColor">Projects</span>
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Here are some of my recent projects showcasing my skills in mobile
-            development and creating innovative digital solutions.
-          </p>
+          <span className="text-4xl font-bold text-mainColor">
+            {String(currentProject + 1).padStart(2, "0")}
+          </span>
+          <span className="text-2xl text-gray-600">
+            /{String(projects.length).padStart(2, "0")}
+          </span>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-h-[60vh] overflow-y-auto">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.2 }}
-              className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-            >
-              <div
-                className={`h-32 bg-gradient-to-br ${project.color} relative overflow-hidden`}
-              >
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="text-white text-4xl font-bold opacity-20"
-                  >
-                    {project.id}
-                  </motion.div>
-                </div>
-                <div className="absolute bottom-3 right-3">
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-white text-xl">{project.icon}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 text-sm mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 2).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 2 && (
-                    <span className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-full">
-                      +{project.technologies.length - 2}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-gray-600 text-gray-300 hover:bg-gray-700"
-                    onClick={() => window.open(project.githubUrl, "_blank")}
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-mainColor hover:bg-opacity-80"
-                    onClick={() => window.open(project.liveUrl, "_blank")}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Live
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
+
+      {/* Main content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center mt-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentProject}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center max-lg:gap-8"
+          >
+            {/* Left Column - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6 max-lg:text-center"
+            >
+              {/* Icon */}
+              {/*<motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.45, delay: 0.3 }}
+                className={`w-20 h-20 bg-gradient-to-br ${project.color} rounded-2xl flex items-center justify-center text-4xl shadow-lg max-lg:mx-auto`}
+              >
+                {project.icon}
+              </motion.div>*/}
+
+              {/* Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="text-4xl font-bold text-white max-lg:text-4xl max-md:text-3xl flex items-center justify-start gap-4"
+              >
+                <span>{project.icon}</span>
+                <span>{project.title}</span>
+              </motion.div>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-lg text-gray-300 leading-relaxed max-lg:text-base"
+              >
+                {project.longDescription}
+              </motion.p>
+
+              {/* Technologies */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-wrap gap-2 max-lg:justify-center"
+              >
+                {project.technologies.map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                    className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm text-gray-300 hover:border-mainColor hover:text-mainColor transition-all duration-300"
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </motion.div>
+
+              {/* Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex gap-4 pt-4 max-lg:justify-center max-md:flex-col"
+              >
+                <Button
+                  size="lg"
+                  className="bg-mainColor hover:bg-opacity-80 text-white px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                  onClick={() => window.open(project.liveUrl, "_blank")}
+                >
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  View Project
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-mainColor hover:text-mainColor px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                  onClick={() => window.open(project.githubUrl, "_blank")}
+                >
+                  <Github className="w-5 h-5 mr-2" />
+                  Source Code
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Images */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative h-[500px] max-lg:h-[400px] max-md:h-[300px]"
+            >
+              {/* Main image container */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                {/* Gradient background */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 rounded-3xl blur-3xl`}
+                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${currentProject}-${currentImageIndex}`}
+                    initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                    transition={{ duration: 0.6 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    {/* Image placeholder */}
+                    <div className="relative z-10 w-full h-full flex items-center justify-center">
+                      <div
+                        className={`w-[80%] h-[80%] flex items-center justify-center relative overflow-hidden`}
+                      >
+                        {/* Mockup design */}
+                        {/*<div className="absolute inset-0 bg-gray-800 opacity-50" />*/}
+                        {/*<div className="relative z-10 text-white text-6xl opacity-30">
+                          {project.icon}
+                        </div>*/}
+
+                        {/* You can replace this with actual images */}
+                        <img
+                          src={project.images[currentImageIndex]}
+                          alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                          className="absolute inset-0 w-full h-full object-contain p-8"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Image indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                  {project.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentImageIndex === index
+                          ? "bg-mainColor w-8"
+                          : "bg-gray-500 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+              {/* Decorative elements */}{" "}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br ${project.color} opacity-10 rounded-full blur-2xl`}
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className={`absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br ${project.color} opacity-10 rounded-full blur-2xl`}
+              />
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Scroll hint */}
+      {currentProject === 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.75 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 text-sm flex flex-col items-center max-md:bottom-20"
+        >
+          <span className="mb-2">Scroll to view more projects</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 }

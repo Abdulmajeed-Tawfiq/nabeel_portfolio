@@ -36,8 +36,29 @@ function App() {
     [sections.length, isScrolling],
   );
 
+  const handleNavigateToNextSection = useCallback(() => {
+    if (currentSection < sections.length - 1) {
+      scrollToSection(currentSection + 1);
+    }
+  }, [currentSection, sections.length, scrollToSection]);
+
+  const handleNavigateToPrevSection = useCallback(() => {
+    if (currentSection > 0) {
+      scrollToSection(currentSection - 1);
+    }
+  }, [currentSection, scrollToSection]);
+
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      // Check if scrolling inside Projects section
+      const target = e.target as HTMLElement;
+      const projectsSection = document.getElementById("portfolio");
+
+      if (projectsSection && projectsSection.contains(target)) {
+        // Let the Projects component handle its own scrolling
+        return;
+      }
+
       e.preventDefault();
 
       if (isScrolling) return;
@@ -197,6 +218,17 @@ function App() {
             <div className="w-full h-full flex items-center justify-center">
               {(() => {
                 const CurrentComponent = sections[currentSection].component;
+
+                // Special handling for Projects component
+                if (currentSection === 2) {
+                  return (
+                    <CurrentComponent
+                      onNavigateToNextSection={handleNavigateToNextSection}
+                      onNavigateToPrevSection={handleNavigateToPrevSection}
+                    />
+                  );
+                }
+
                 return <CurrentComponent />;
               })()}
             </div>
