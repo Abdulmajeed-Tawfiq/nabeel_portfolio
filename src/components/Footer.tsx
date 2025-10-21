@@ -94,6 +94,8 @@ function Footer() {
                 href="https://abdulmajeed10.netlify.app"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Abdulmajeed Tawfik"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Abdulmajeed Tawfik
               </a>
