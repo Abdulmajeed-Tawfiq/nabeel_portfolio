@@ -202,6 +202,21 @@ function Portfolio({
                     App Store
                   </Button>
                 )}
+                {project.googleUrl && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-mainColor hover:text-mainColor px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                    onClick={() => window.open(project.googleUrl!, "_blank")}
+                  >
+                    <img
+                      src="/android-white.svg"
+                      alt="Google Play"
+                      className="w-6 h-6 mr-2"
+                    />
+                    Android
+                  </Button>
+                )}
                 {project.demoUrl && (
                   <Button
                     size="lg"
@@ -240,19 +255,12 @@ function Portfolio({
                     {/* Image placeholder */}
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                       <div
-                        className={`w-[80%] h-[80%] flex items-center justify-center relative overflow-hidden`}
+                        className={`w-[90%] h-[90%] flex items-center justify-center relative overflow-hidden`}
                       >
-                        {/* Mockup design */}
-                        {/*<div className="absolute inset-0 bg-gray-800 opacity-50" />*/}
-                        {/*<div className="relative z-10 text-white text-6xl opacity-30">
-                          {project.icon}
-                        </div>*/}
-
-                        {/* You can replace this with actual images */}
                         <img
-                          src={project.images[currentImageIndex]}
+                          src={`/images/${project.title}/${project.images[currentImageIndex]}`}
                           alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-                          className="absolute inset-0 w-full h-full object-contain p-8"
+                          className="absolute inset-0 w-fit m-auto h-full object-contain rounded-2xl"
                           onError={(e) => {
                             e.currentTarget.style.display = "none";
                           }}
@@ -263,7 +271,7 @@ function Portfolio({
                 </AnimatePresence>
 
                 {/* Image indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
                   {project.images.map((_, index) => (
                     <button
                       key={index}

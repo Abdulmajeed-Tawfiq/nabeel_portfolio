@@ -46,7 +46,7 @@ function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Mobile App Developer with over 2 years of experience in building
+              Mobile App Developer with over 3 years of experience in building
               production-level mobile applications using Flutter and Dart.
               Proficient in Firebase, RESTful APIs, real-time communication, and
               state management. Experienced in app deployment across various

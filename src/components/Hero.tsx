@@ -42,17 +42,14 @@ function Hero() {
               experiences. 🚀
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <a
+              href="https://drive.google.com/file/d/1g1zvd8MG-VKqfxa5ztxMQk0UYBnkisoQ/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-mainColor rounded-xl w-fit text-xl py-4 px-6 hover:bg-opacity-80 transition-all duration-300"
             >
-              <Button className="bg-mainColor rounded-xl text-xl py-6 px-8 hover:bg-opacity-80 transition-all duration-300">
-                Check My CV <span>📄</span>
-              </Button>
-            </motion.div>
+              Check My CV <span>📄</span>
+            </a>
           </motion.div>
 
           <motion.div

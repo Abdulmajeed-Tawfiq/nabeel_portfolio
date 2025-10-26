@@ -6,6 +6,7 @@ export interface Project {
   icon: string;
   technologies: string[];
   appleUrl?: string | null;
+  googleUrl?: string | null;
   demoUrl?: string | null;
   color: string;
   images: string[];
@@ -31,7 +32,16 @@ export const projects: Project[] = [
     demoUrl:
       "https://drive.google.com/file/d/1JrD1yKTLEUGqSPHTOuJi5SAr6LTSjRTK/view?usp=sharing",
     color: "from-purple-500 to-pink-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: [
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+    ],
   },
   {
     id: 2,
@@ -45,7 +55,7 @@ export const projects: Project[] = [
     appleUrl: "https://apps.apple.com/us/app/swess-home/id1591728350",
     demoUrl: null,
     color: "from-blue-500 to-teal-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp"],
   },
   {
     id: 3,
@@ -56,10 +66,11 @@ export const projects: Project[] = [
       "Online store for selling clothes and fashion with electronic payment features.",
     icon: "🛒",
     technologies: ["Flutter", "Dart", "E-commerce", "Electronic Payment"],
-    appleUrl: "https://apps.apple.com/be/app/eavando/id6448908064",
+    appleUrl: null,
+    googleUrl: "https://apkpure.com/eavando/com.axtrosoft.eavando2",
     demoUrl: null,
     color: "from-green-500 to-lime-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
   },
   {
     id: 4,
@@ -72,7 +83,17 @@ export const projects: Project[] = [
     appleUrl: "https://apps.apple.com/ae/app/sevenrm/id6475645542",
     demoUrl: null,
     color: "from-red-500 to-yellow-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: [
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+      "9.webp",
+    ],
   },
   {
     id: 5,
@@ -86,7 +107,7 @@ export const projects: Project[] = [
     appleUrl: "https://apps.apple.com/in/app/mazad-alnokhba/id1597116939",
     demoUrl: null,
     color: "from-indigo-500 to-cyan-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp"],
   },
   {
     id: 6,
@@ -105,7 +126,7 @@ export const projects: Project[] = [
     appleUrl: "https://apps.apple.com/kw/app/rayan-customer/id1621499233",
     demoUrl: null,
     color: "from-orange-500 to-amber-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: ["1.webp", "2.webp", "3.webp"],
   },
   {
     id: 7,
@@ -117,26 +138,13 @@ export const projects: Project[] = [
     icon: "📋",
     technologies: ["Flutter", "Dart", "Task Management", "Trip Management"],
     appleUrl: "https://apps.apple.com/us/app/we-safe/id6736458367",
-    demoUrl: null,
+    demoUrl:
+      "https://drive.google.com/file/d/1UsWwYEAuthb1-p19PBD5kqW9DAnle276/view?usp=sharing",
     color: "from-rose-500 to-red-600",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
   },
   {
     id: 8,
-    title: "Clinics Assistant (Graduation Project)",
-    description: "Application for managing clinic reservations.",
-    longDescription:
-      "Application for managing clinic reservations. (My Graduation Project)",
-    icon: "🩺",
-    technologies: ["Flutter", "Dart", "Booking System", "Clinic Management"],
-    appleUrl: null,
-    demoUrl:
-      "https://drive.google.com/file/d/1R-HCnBfB9VvwfB7UiM0vj4ldASvIM3Bx/view?usp=sharing",
-    color: "from-sky-500 to-violet-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
-  },
-  {
-    id: 9,
     title: "Gas Express",
     description:
       "Ecommerce for Gas products with admin dashboard and delivery App.",
@@ -150,10 +158,21 @@ export const projects: Project[] = [
       "Admin Dashboard",
       "Delivery App",
     ],
-    appleUrl: null,
+    appleUrl: "https://apps.apple.com/us/app/gazxpress/id6752856616",
+    googleUrl:
+      "https://play.google.com/store/apps/details?id=com.gazxpress24.app",
     demoUrl:
-      "https://drive.google.com/file/d/1bCLh575CG99BtW0ODULG5WOZ2EM8TdH/view?usp=sharing",
+      "https://drive.google.com/file/d/1bCLh5_75CG99BtW0ODuLG5WOZ2EM8TdH/view?usp=sharing",
     color: "from-purple-500 to-pink-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
+    images: [
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+    ],
   },
 ];
