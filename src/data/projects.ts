@@ -16,9 +16,9 @@ export const projects: Project[] = [
     id: 1,
     title: "Moovo App",
     description:
-      "A user-friendly ecommerce app for browsing products, adding to cart, and secure payments. [cite: 36]",
+      "A user-friendly ecommerce app for browsing products, adding to cart, and secure payments.",
     longDescription:
-      "Developed a user-friendly ecommerce app enabling customers to browse products, add items to cart, and complete secure payments. [cite: 36] Integrated features like product search, and push notifications to enhance user experience. [cite: 37]",
+      "Developed a user-friendly ecommerce app enabling customers to browse products, add items to cart, and complete secure payments. Integrated features like product search, and push notifications to enhance user experience.",
     icon: "🛍️",
     technologies: [
       "Flutter",
@@ -37,9 +37,9 @@ export const projects: Project[] = [
     id: 2,
     title: "Swess Home",
     description:
-      "Real estate app covering properties in Damascus and its countryside. [cite: 38]",
+      "Real estate app covering properties in Damascus and its countryside.",
     longDescription:
-      "A real estate app covering properties in Damascus and its countryside. [cite: 38] Features agent listings and extensive property coverage. [cite: 39]",
+      "A real estate app covering properties in Damascus and its countryside. Features agent listings and extensive property coverage.",
     icon: "🏠",
     technologies: ["Flutter", "Dart", "Real Estate", "Agent Listings"],
     appleUrl: "https://apps.apple.com/us/app/swess-home/id1591728350",
@@ -51,9 +51,9 @@ export const projects: Project[] = [
     id: 3,
     title: "Eavando App",
     description:
-      "Online store for selling clothes and fashion with electronic payment features. [cite: 41]",
+      "Online store for selling clothes and fashion with electronic payment features.",
     longDescription:
-      "Online store for selling clothes and fashion with electronic payment features. [cite: 41]",
+      "Online store for selling clothes and fashion with electronic payment features.",
     icon: "🛒",
     technologies: ["Flutter", "Dart", "E-commerce", "Electronic Payment"],
     appleUrl: "https://apps.apple.com/be/app/eavando/id6448908064",
@@ -64,10 +64,9 @@ export const projects: Project[] = [
   {
     id: 4,
     title: "7RM APP",
-    description:
-      "Online booking services for quality horse events in the UAE. [cite: 43]",
+    description: "Online booking services for quality horse events in the UAE.",
     longDescription:
-      "Online booking services for quality horse events in the UAE. [cite: 43]",
+      "Online booking services for quality horse events in the UAE.",
     icon: "🐎",
     technologies: ["Flutter", "Dart", "Booking System", "Events"],
     appleUrl: "https://apps.apple.com/ae/app/sevenrm/id6475645542",
@@ -79,9 +78,9 @@ export const projects: Project[] = [
     id: 5,
     title: "Mazad Alnokhba",
     description:
-      "E-commerce app with multi-stores for animal-related products. [cite: 44]",
+      "E-commerce app with multi-stores for animal-related products.",
     longDescription:
-      "E-commerce app with multi-stores for animal-related products. [cite: 44]",
+      "E-commerce app with multi-stores for animal-related products.",
     icon: "🛍️",
     technologies: ["Flutter", "Dart", "E-commerce", "Multi-store"],
     appleUrl: "https://apps.apple.com/in/app/mazad-alnokhba/id1597116939",
@@ -92,10 +91,9 @@ export const projects: Project[] = [
   {
     id: 6,
     title: "Ryan Customer - Captain",
-    description:
-      "Driver taxi app allowing customers to book taxi cars. [cite: 45]",
+    description: "Driver taxi app allowing customers to book taxi cars.",
     longDescription:
-      "Driver taxi app allowing customers to book taxi cars. [cite: 45] Includes separate apps for the driver and the customer. [cite: 46]",
+      "Driver taxi app allowing customers to book taxi cars. Includes separate apps for the driver and the customer.",
     icon: "🚕",
     technologies: [
       "Flutter",
@@ -113,9 +111,9 @@ export const projects: Project[] = [
     id: 7,
     title: "WeSafe",
     description:
-      "Trips Management App helps employees to manage your tasks and trips. [cite: 47]",
+      "Trips Management App helps employees to manage your tasks and trips.",
     longDescription:
-      "Trips Management App helps employees to manage your tasks and trips and organizes it. [cite: 47] in addition to monitors their works efficiency. [cite: 48]",
+      "Trips Management App helps employees to manage your tasks and trips and organizes it. in addition to monitors their works efficiency.",
     icon: "📋",
     technologies: ["Flutter", "Dart", "Task Management", "Trip Management"],
     appleUrl: "https://apps.apple.com/us/app/we-safe/id6736458367",
@@ -126,9 +124,9 @@ export const projects: Project[] = [
   {
     id: 8,
     title: "Clinics Assistant (Graduation Project)",
-    description: "Application for managing clinic reservations. [cite: 50]",
+    description: "Application for managing clinic reservations.",
     longDescription:
-      "Application for managing clinic reservations. (My Graduation Project) [cite: 50]",
+      "Application for managing clinic reservations. (My Graduation Project)",
     icon: "🩺",
     technologies: ["Flutter", "Dart", "Booking System", "Clinic Management"],
     appleUrl: null,
@@ -141,9 +139,9 @@ export const projects: Project[] = [
     id: 9,
     title: "Gas Express",
     description:
-      "Ecommerce for Gas products with admin dashboard and delivery App. [cite: 58]",
+      "Ecommerce for Gas products with admin dashboard and delivery App.",
     longDescription:
-      "Ecommerce for Gas products with admin dashboard and delivery App. [cite: 58]",
+      "Ecommerce for Gas products with admin dashboard and delivery App.",
     icon: "⛽",
     technologies: [
       "Flutter",
