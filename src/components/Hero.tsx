@@ -1,6 +1,5 @@
-import Lottie from "lottie-react";
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
+import Lottie from "lottie-react";
 import heroAnimation from "../../public/lotiFiles/mobile-animation-3.json";
 
 function Hero() {
