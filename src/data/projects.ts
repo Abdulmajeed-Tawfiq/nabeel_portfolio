@@ -20,7 +20,7 @@ export const projects: Project[] = [
       "A user-friendly ecommerce app for browsing products, adding to cart, and secure payments.",
     longDescription:
       "Developed a user-friendly ecommerce app enabling customers to browse products, add items to cart, and complete secure payments. Integrated features like product search, and push notifications to enhance user experience.",
-    icon: "🛍️",
+    icon: "logo.webp",
     technologies: [
       "Flutter",
       "Dart",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
       "Real estate app covering properties in Damascus and its countryside.",
     longDescription:
       "A real estate app covering properties in Damascus and its countryside. Features agent listings and extensive property coverage.",
-    icon: "🏠",
+    icon: "logo.webp",
     technologies: ["Flutter", "Dart", "Real Estate", "Agent Listings"],
     appleUrl: "https://apps.apple.com/us/app/swess-home/id1591728350",
     demoUrl: null,
@@ -64,7 +64,7 @@ export const projects: Project[] = [
       "Online store for selling clothes and fashion with electronic payment features.",
     longDescription:
       "Online store for selling clothes and fashion with electronic payment features.",
-    icon: "🛒",
+    icon: "logo.webp",
     technologies: ["Flutter", "Dart", "E-commerce", "Electronic Payment"],
     appleUrl: null,
     googleUrl: "https://apkpure.com/eavando/com.axtrosoft.eavando2",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     description: "Online booking services for quality horse events in the UAE.",
     longDescription:
       "Online booking services for quality horse events in the UAE.",
-    icon: "🐎",
+    icon: "logo.webp",
     technologies: ["Flutter", "Dart", "Booking System", "Events"],
     appleUrl: "https://apps.apple.com/ae/app/sevenrm/id6475645542",
     demoUrl: null,
@@ -102,20 +102,20 @@ export const projects: Project[] = [
       "E-commerce app with multi-stores for animal-related products.",
     longDescription:
       "E-commerce app with multi-stores for animal-related products.",
-    icon: "🛍️",
+    icon: "logo.webp",
     technologies: ["Flutter", "Dart", "E-commerce", "Multi-store"],
     appleUrl: "https://apps.apple.com/in/app/mazad-alnokhba/id1597116939",
     demoUrl: null,
-    color: "from-indigo-500 to-cyan-500",
+    color: "from-green-500 to-lime-500",
     images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp"],
   },
   {
     id: 6,
-    title: "Ryan Customer - Captain",
+    title: "Ryan Customer",
     description: "Driver taxi app allowing customers to book taxi cars.",
     longDescription:
       "Driver taxi app allowing customers to book taxi cars. Includes separate apps for the driver and the customer.",
-    icon: "🚕",
+    icon: "logo.webp",
     technologies: [
       "Flutter",
       "Dart",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     ],
     appleUrl: "https://apps.apple.com/kw/app/rayan-customer/id1621499233",
     demoUrl: null,
-    color: "from-orange-500 to-amber-500",
+    color: "from-green-500 to-lime-500",
     images: ["1.webp", "2.webp", "3.webp"],
   },
   {
@@ -135,12 +135,12 @@ export const projects: Project[] = [
       "Trips Management App helps employees to manage your tasks and trips.",
     longDescription:
       "Trips Management App helps employees to manage your tasks and trips and organizes it. in addition to monitors their works efficiency.",
-    icon: "📋",
+    icon: "logo.webp",
     technologies: ["Flutter", "Dart", "Task Management", "Trip Management"],
     appleUrl: "https://apps.apple.com/us/app/we-safe/id6736458367",
     demoUrl:
       "https://drive.google.com/file/d/1UsWwYEAuthb1-p19PBD5kqW9DAnle276/view?usp=sharing",
-    color: "from-rose-500 to-red-600",
+    color: "from-lime-500 to-green-500",
     images: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
   },
   {
@@ -150,7 +150,7 @@ export const projects: Project[] = [
       "Ecommerce for Gas products with admin dashboard and delivery App.",
     longDescription:
       "Ecommerce for Gas products with admin dashboard and delivery App.",
-    icon: "⛽",
+    icon: "logo.webp",
     technologies: [
       "Flutter",
       "Dart",
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       "https://play.google.com/store/apps/details?id=com.gazxpress24.app",
     demoUrl:
       "https://drive.google.com/file/d/1bCLh5_75CG99BtW0ODuLG5WOZ2EM8TdH/view?usp=sharing",
-    color: "from-purple-500 to-pink-500",
+    color: "from-orange-500 to-yellow-500",
     images: [
       "1.webp",
       "2.webp",

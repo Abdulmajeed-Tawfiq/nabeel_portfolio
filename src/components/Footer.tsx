@@ -41,17 +41,12 @@ function Footer() {
           >
             {[
               {
-                icon: Github,
-                href: "https://github.com/nabeel",
-                label: "GitHub",
-              },
-              {
                 icon: Linkedin,
-                href: "https://linkedin.com/in/nabeel",
+                href: "https://www.linkedin.com/in/nabeel-gefary-955020207",
                 label: "LinkedIn",
               },
-              { icon: Mail, href: "mailto:nabeel@example.com", label: "Email" },
-              { icon: Phone, href: "tel:+15551234567", label: "Phone" },
+              { icon: Mail, href: "mailto:nabgef@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+963967122753", label: "Phone" },
             ].map((social, index) => (
               <motion.a
                 key={social.label}

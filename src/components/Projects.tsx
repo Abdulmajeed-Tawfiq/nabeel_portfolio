@@ -25,6 +25,15 @@ function Portfolio({
         setCurrentProject(index);
         setCurrentImageIndex(0);
 
+        // Add a smooth visual transition when changing projects
+        const projectElement = document.getElementById("project-content");
+        if (projectElement) {
+          projectElement.style.opacity = "0";
+          setTimeout(() => {
+            projectElement.style.opacity = "1";
+          }, 300);
+        }
+
         setTimeout(() => {
           setIsScrolling(false);
         }, 750);
@@ -100,7 +109,7 @@ function Portfolio({
       className="h-screen w-full flex items-center justify-center bg-gray-900 text-white overflow-hidden relative"
     >
       {/* Project Counter */}
-      <div className="absolute top-24 left-8 z-20 max-md:top-20 max-md:left-4">
+      <div className="absolute top-24 left-8 z-20 max-md:top-20 max-md:left-4 hidden">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -115,8 +124,48 @@ function Portfolio({
         </motion.div>
       </div>
 
+      {/* Projects List - Vertical */}
+      <div
+        className="fixed z-99 left-4 top-[55%] transform -translate-y-1/2 z-99 max-lg:left-4 hidden lg:block max-h-[90vh]"
+        onMouseEnter={(e) => (e.currentTarget.style.width = "14%")}
+        onMouseLeave={(e) => (e.currentTarget.style.width = "fit-content")}
+        onTouchMoveCapture={(e) =>
+          (e.currentTarget.style.width = "fit-content")
+        }
+      >
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col justify-center gap-3.5 max-h-[90vh] overflow-y-auto ps-2 no-scrollbar"
+        >
+          {projects.map((proj, index) => (
+            <motion.button
+              key={proj.id}
+              onClick={() => scrollToProject(index)}
+              className={`text-sm transition-all duration-300 group relative w-12 h-12 flex items-center justify-center`}
+              initial={{ opacity: 0, scale: 0.9, x: -10 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                x: currentProject === index ? 0 : -5,
+              }}
+              whileHover={{ scale: 1.1 }}
+              // transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            >
+              <img
+                src={`/images/${proj.title}/${proj.icon}`}
+                className="text-xl w-10 h-10 rounded-full"
+              />
+              <span className="absolute left-14  z-99 bg-gray-800 px-2 py-1.5 text-[12px] rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-lg pointer-events-none text-white">
+                {proj.title}
+              </span>
+            </motion.button>
+          ))}
+        </motion.div>
+      </div>
+
       {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center mt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center mt-6 max-md:ml-0 ml-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentProject}
@@ -125,6 +174,7 @@ function Portfolio({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center max-lg:gap-8"
+            id="project-content"
           >
             {/* Left Column - Content */}
             <motion.div
@@ -150,7 +200,11 @@ function Portfolio({
                 transition={{ duration: 0.6, delay: 0.35 }}
                 className="text-4xl font-bold text-white max-lg:text-4xl max-md:text-3xl flex items-center justify-start gap-4"
               >
-                <span>{project.icon}</span>
+                <img
+                  src={`/images/${project.title}/${project.icon}`}
+                  alt={project.title}
+                  className="w-10 h-10 rounded-full"
+                />
                 <span>{project.title}</span>
               </motion.div>
 
@@ -255,7 +309,7 @@ function Portfolio({
                     {/* Image placeholder */}
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                       <div
-                        className={`w-[90%] h-[90%] flex items-center justify-center relative overflow-hidden`}
+                        className={`w-[90%] h-[90%] flex items-center justify-center relative overflow-hidden rounded-xl`}
                       >
                         <img
                           src={`/images/${project.title}/${project.images[currentImageIndex]}`}
@@ -278,9 +332,10 @@ function Portfolio({
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         currentImageIndex === index
-                          ? "bg-mainColor w-8"
-                          : "bg-gray-500 hover:bg-gray-400"
+                          ? "bg-mainColor w-8 shadow-md shadow-mainColor/20"
+                          : "bg-gray-500/60 hover:bg-gray-400"
                       }`}
+                      aria-label={`View image ${index + 1}`}
                     />
                   ))}
                 </div>
