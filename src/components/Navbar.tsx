@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { navItems } from "../data/navigation";
 
 interface NavbarProps {
   currentSection: number;
@@ -9,13 +10,6 @@ interface NavbarProps {
 const Navbar = ({ currentSection, scrollToSection }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);
-
-  const navItems = [
-    { name: "Home", index: 0 },
-    { name: "About", index: 1 },
-    { name: "Portfolio", index: 2 },
-    { name: "Contact", index: 3 },
-  ];
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

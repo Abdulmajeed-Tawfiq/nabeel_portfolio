@@ -1,113 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ExternalLink, Github } from "lucide-react";
+import { ChevronDown, Apple, Globe } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
+import { projects } from "../data/projects";
 
 interface PortfolioProps {
   onNavigateToNextSection?: () => void;
   onNavigateToPrevSection?: () => void;
 }
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  longDescription: string;
-  icon: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl: string;
-  color: string;
-  images: string[];
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-Commerce Mobile App",
-    description:
-      "A full-featured e-commerce mobile application built with Flutter",
-    longDescription:
-      "A comprehensive e-commerce solution featuring user authentication, real-time product catalog, advanced shopping cart functionality, secure payment integration with Stripe, and complete order management system. The app includes push notifications, wishlist features, product reviews, and personalized recommendations.",
-    icon: "📱",
-    technologies: [
-      "Flutter",
-      "Dart",
-      "Firebase",
-      "Stripe",
-      "REST API",
-      "Push Notifications",
-    ],
-    githubUrl: "https://github.com/nabeel/ecommerce-app",
-    liveUrl: "https://play.google.com/store/apps",
-    color: "from-purple-500 to-pink-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
-  },
-  {
-    id: 2,
-    title: "Social Media Dashboard",
-    description: "A responsive social media management dashboard",
-    longDescription:
-      "A powerful social media management platform with real-time analytics, intelligent post scheduling, engagement tracking, and comprehensive user insights. Features include multi-account management, content calendar, performance metrics, and automated reporting tools.",
-    icon: "📊",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "MongoDB",
-      "Socket.io",
-      "Chart.js",
-    ],
-    githubUrl: "https://github.com/nabeel/social-dashboard",
-    liveUrl: "https://social-dashboard.vercel.app",
-    color: "from-blue-500 to-cyan-500",
-    images: [
-      "/images/phone.svg",
-      "/images/phone.svg",
-      "/images/phone.svg",
-      "/images/phone.svg",
-      "/images/phone.svg",
-    ],
-  },
-  {
-    id: 3,
-    title: "Weather App",
-    description: "Beautiful weather application with location-based forecasts",
-    longDescription:
-      "An elegant weather application providing accurate location-based forecasts, interactive weather maps, hourly and weekly predictions, and detailed meteorological information. Features smooth animations, customizable widgets, and weather alerts for severe conditions.",
-    icon: "🌤️",
-    technologies: [
-      "Flutter",
-      "OpenWeather API",
-      "Location Services",
-      "Animations",
-      "Maps",
-    ],
-    githubUrl: "https://github.com/nabeel/weather-app",
-    liveUrl: "https://weather-app-demo.com",
-    color: "from-green-500 to-teal-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
-  },
-  {
-    id: 4,
-    title: "Task Management System",
-    description: "Comprehensive task management with team collaboration",
-    longDescription:
-      "A modern task management system designed for teams with features including project tracking, kanban boards, time tracking, productivity analytics, and real-time collaboration. Includes calendar integration, file attachments, comments, and custom workflows.",
-    icon: "✅",
-    technologies: [
-      "React Native",
-      "Redux",
-      "Express.js",
-      "PostgreSQL",
-      "WebSocket",
-    ],
-    githubUrl: "https://github.com/nabeel/task-manager",
-    liveUrl: "https://taskmanager.app",
-    color: "from-orange-500 to-red-500",
-    images: ["/images/phone.svg", "/images/phone.svg", "/images/phone.svg"],
-  },
-];
 
 function Portfolio({
   onNavigateToNextSection,
@@ -291,23 +191,27 @@ function Portfolio({
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="flex gap-4 pt-4 max-lg:justify-center max-md:flex-col"
               >
-                <Button
-                  size="lg"
-                  className="bg-mainColor hover:bg-opacity-80 text-white px-8 py-6 text-lg rounded-xl transition-all duration-300"
-                  onClick={() => window.open(project.liveUrl, "_blank")}
-                >
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  View Project
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-mainColor hover:text-mainColor px-8 py-6 text-lg rounded-xl transition-all duration-300"
-                  onClick={() => window.open(project.githubUrl, "_blank")}
-                >
-                  <Github className="w-5 h-5 mr-2" />
-                  Source Code
-                </Button>
+                {project.appleUrl && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-mainColor hover:text-mainColor px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                    onClick={() => window.open(project.appleUrl!, "_blank")}
+                  >
+                    <Apple className="w-5 h-5 mr-2" />
+                    App Store
+                  </Button>
+                )}
+                {project.demoUrl && (
+                  <Button
+                    size="lg"
+                    className="bg-mainColor hover:bg-opacity-80 text-white px-8 py-6 text-lg rounded-xl transition-all duration-300"
+                    onClick={() => window.open(project.demoUrl!, "_blank")}
+                  >
+                    <Globe className="w-5 h-5 mr-2" />
+                    Demo
+                  </Button>
+                )}
               </motion.div>
             </motion.div>
 
