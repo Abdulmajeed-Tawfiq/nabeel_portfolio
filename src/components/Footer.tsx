@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div
       id="footer"
-      className="h-screen w-full flex items-center justify-center bg-gray-900 text-white"
+      className="h-screen w-[94%] mx-auto flex items-center justify-center bg-gray-900 text-white"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
         <motion.div

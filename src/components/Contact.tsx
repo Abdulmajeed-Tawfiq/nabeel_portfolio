@@ -5,7 +5,7 @@ function Contact() {
   return (
     <div
       id="contact"
-      className="h-screen w-full flex items-center justify-center bg-gray-900 text-white"
+      className="h-screen w-[94%] mx-auto flex items-center justify-center bg-gray-900 text-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -43,15 +43,15 @@ function Contact() {
             >
               <div className="flex items-center justify-center lg:justify-start gap-3">
                 <Mail className="w-5 h-5 text-mainColor" />
-                <span className="text-gray-300">nabeel@example.com</span>
+                <span className="text-gray-300">nabgef@gmail.com</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-3">
                 <Phone className="w-5 h-5 text-mainColor" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+963 967122753</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-3">
                 <MapPin className="w-5 h-5 text-mainColor" />
-                <span className="text-gray-300">Your City, Country</span>
+                <span className="text-gray-300">Syria - Damascus</span>
               </div>
             </motion.div>
           </motion.div>
@@ -99,7 +99,7 @@ function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Send Message 🚀
+                Send Message
               </motion.button>
             </form>
           </motion.div>
